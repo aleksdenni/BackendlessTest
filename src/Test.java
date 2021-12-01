@@ -7,7 +7,19 @@ public class Test {
 
 
     public static void reverse(Node node){
-        List<Node> nodeList = new ArrayList<>();
+
+        for (int i=0;node!=null;i++){
+            Node next = node.getNext();
+            if (i==0){
+                node.setNext(null);
+            }
+            node=next;
+            if (i!=0){
+                next.setNext(node);
+            }
+        }
+
+        /*List<Node> nodeList = new ArrayList<>();
         for (int i=0 ; node!=null ; i++){
             Node next = node.getNext();
             if (i==0){
@@ -16,11 +28,11 @@ public class Test {
             nodeList.add(node);
             node = next;
         }
-        Collections.reverse(nodeList);
-        for (Node n : nodeList) {
-            System.out.println(n.getValue());
-        }
+        Collections.reverse(nodeList);*/
+
     }
+
+
 
     public static void main(String[] args) {
         Test test = new Test();
@@ -34,8 +46,6 @@ public class Test {
                 nodes.get(i).setNext(nodes.get(i + 1));
             }
         }
-
-        System.out.println(nodes.get(0).getValue());
-        //test.reverse(nodes.get(0));
+        test.reverse(nodes.get(0));
     }
 }
